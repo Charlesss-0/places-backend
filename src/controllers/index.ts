@@ -1,3 +1,3 @@
-import handleDataQuery from './handle-data-query'
+import { getPlaces, getTestData } from './placesController'
 
-export { handleDataQuery }
+export { getPlaces, getTestData }

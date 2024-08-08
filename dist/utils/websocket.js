@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = configureWebSocket;
 const services_1 = require("../services");
 function configureWebSocket(wss) {
-    const discounts = (0, services_1.getDiscountData)();
+    const placesData = (0, services_1.getQueryData)();
     const broadcast = (data) => {
         wss.clients.forEach(client => {
             if (client.readyState === 1) {
@@ -12,7 +12,7 @@ function configureWebSocket(wss) {
         });
     };
     wss.on('connection', ws => {
-        ws.send(JSON.stringify(discounts));
+        ws.send(JSON.stringify(placesData));
         ws.on('message', msg => {
             broadcast(msg);
         });

@@ -1,3 +1,3 @@
-import places from './places'
+import { placesRouter } from './placesRouter'
 
-export { places }
+export { placesRouter }

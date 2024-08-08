@@ -1,3 +1,3 @@
-import { getQueryData } from './fsq-api'
+import { getPlacesByQueryAndLocation, getPlacesPhotos, getQueryData } from './placesService'
 
-export { getQueryData }
+export { getPlacesByQueryAndLocation, getPlacesPhotos, getQueryData }
