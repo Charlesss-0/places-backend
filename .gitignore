@@ -3,3 +3,4 @@
 
 # node related packages
 node_modules
+.vercel

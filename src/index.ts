@@ -22,3 +22,5 @@ server.listen(port, () => {
 const wss = new WebSocketServer({ server })
 
 configureWebSocket(wss)
+
+export default app
