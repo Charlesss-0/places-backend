@@ -1,8 +1,9 @@
 import 'dotenv/config'
 
+import express, { Request, Response } from 'express'
+
 import { WebSocketServer } from 'ws'
 import { configureWebSocket } from './utils'
-import express from 'express'
 import http from 'http'
 import { placesRouter } from './routes'
 
@@ -10,6 +11,10 @@ const app = express()
 const port: number = 3000
 
 app.use(express.json())
+
+app.get('/', (req: Request, res: Response) => {
+	res.send('Welcome to the places API')
+})
 
 app.use('/places/search', placesRouter)
 

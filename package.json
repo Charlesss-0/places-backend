@@ -10,6 +10,7 @@
 		"start": "ts-node src/index.js",
 		"dev": "nodemon",
 		"build": "tsc",
+		"deploy": "vercel --prod",
 		"lint": "eslint 'src/**/*.{js,ts}'",
 		"lint:fix": "eslint 'src/**/*.{js,ts}' --fix",
 		"vercel-build": "echo hello"
