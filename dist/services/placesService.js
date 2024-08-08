@@ -364,17 +364,18 @@ const getQueryData = () => {
     return data;
 };
 exports.getQueryData = getQueryData;
-let nextLinkStore = null;
+// global variable to store the next link request
+let nextLink = null;
 // request the list of places based on the query and user's location
 function getPlacesByQueryAndLocation(query_1, lat_1, lon_1) {
     return __awaiter(this, arguments, void 0, function* (query, lat, lon, next = 'false') {
         try {
             let response;
             if (next === 'true') {
-                if (!nextLinkStore) {
-                    return { places: [], hasNextPage: false };
+                if (!nextLink) {
+                    return { places: [], hasNextPage: null };
                 }
-                response = yield axios_1.default.get(nextLinkStore, {
+                response = yield axios_1.default.get(nextLink, {
                     headers: {
                         Accept: 'application/json',
                         Authorization: process.env.FSQ_API_TOKEN,
@@ -399,10 +400,10 @@ function getPlacesByQueryAndLocation(query_1, lat_1, lon_1) {
             const linkHeader = response.headers.link;
             if (linkHeader) {
                 const match = linkHeader.match(/<([^>]+)>;\s*rel="next"/);
-                nextLinkStore = match ? match[1] : null;
+                nextLink = match ? match[1] : null;
             }
             else {
-                nextLinkStore = null;
+                nextLink = null;
             }
             const formattedPlaces = response.data.results.map((result) => {
                 var _a;
@@ -419,7 +420,7 @@ function getPlacesByQueryAndLocation(query_1, lat_1, lon_1) {
                     },
                 });
             });
-            return { places: formattedPlaces, hasNextPage: nextLinkStore !== null };
+            return { places: formattedPlaces, hasNextPage: nextLink !== null };
         }
         catch (error) {
             utils_1.logger.error(`Error fetching places: ${error.message}`);

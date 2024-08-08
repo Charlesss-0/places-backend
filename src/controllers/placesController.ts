@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { getPlacesByQueryAndLocation, getPlacesPhotos, getQueryData } from '@/services'
+import { getPlacesByQueryAndLocation, getPlacesPhotos, getQueryData } from '../services'
 
 export async function getTestData(req: Request, res: Response) {
 	const data = getQueryData()

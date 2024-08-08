@@ -366,6 +366,9 @@ export const getQueryData = () => {
 	return data
 }
 
+// global variable to store the next link request
+let nextLink: string | null = null
+
 // request the list of places based on the query and user's location
 export async function getPlacesByQueryAndLocation(
 	query: string,
@@ -373,17 +376,15 @@ export async function getPlacesByQueryAndLocation(
 	lon: string,
 	next = 'false'
 ) {
-	let nextLinkStore: string | null = null
-
 	try {
 		let response
 
 		if (next === 'true') {
-			if (!nextLinkStore) {
-				return { places: [], hasNextPage: false }
+			if (!nextLink) {
+				return { places: [], hasNextPage: null }
 			}
 
-			response = await axios.get(nextLinkStore, {
+			response = await axios.get(nextLink, {
 				headers: {
 					Accept: 'application/json',
 					Authorization: process.env.FSQ_API_TOKEN,
@@ -408,9 +409,9 @@ export async function getPlacesByQueryAndLocation(
 		const linkHeader = response.headers.link
 		if (linkHeader) {
 			const match = linkHeader.match(/<([^>]+)>;\s*rel="next"/)
-			nextLinkStore = match ? match[1] : null
+			nextLink = match ? match[1] : null
 		} else {
-			nextLinkStore = null
+			nextLink = null
 		}
 
 		const formattedPlaces = response.data.results.map((result: any) => ({
@@ -426,7 +427,7 @@ export async function getPlacesByQueryAndLocation(
 			},
 		}))
 
-		return { places: formattedPlaces, hasNextPage: nextLinkStore !== null }
+		return { places: formattedPlaces, hasNextPage: nextLink !== null }
 	} catch (error: any) {
 		logger.error(`Error fetching places: ${error.message}`)
 		throw new Error('Failed to fetch places data')
