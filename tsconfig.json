@@ -1,13 +1,17 @@
 {
 	"compilerOptions": {
 		"outDir": "./dist",
-		"target": "es2016",
+		"target": "ESNext",
 		"module": "commonjs",
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"typeRoots": ["@types/*"],
+		"paths": {
+			"types/*": ["./@types/*"]
+		}
 	},
-	"include": ["api", "src"],
+	"include": ["api", "src/**/*", "./@types/**/*.d.ts"],
 	"exclude": ["node_modules"]
 }

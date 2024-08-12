@@ -30,7 +30,7 @@ export async function getPlaces(req: Request, res: Response) {
 		const { places, hasNextPage } = result
 		const placesWithPhotos = await getPlacesPhotos(places)
 		res.send({ places: placesWithPhotos, hasNextPage })
-	} catch (error) {
-		res.status(500).send({ error: 'Error fetching data from FSQ' })
+	} catch (error: any) {
+		res.status(500).send({ error: `Error fetching data from FSQ ${error.message}` })
 	}
 }

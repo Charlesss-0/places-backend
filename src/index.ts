@@ -3,6 +3,7 @@ import 'dotenv/config'
 import express, { Request, Response } from 'express'
 
 import { WebSocketServer } from 'ws'
+import { checkApiKey } from './middlewares/api-key-middleware'
 import { configureWebSocket } from './utils'
 import http from 'http'
 import { placesRouter } from './routes'
@@ -16,7 +17,7 @@ app.get('/', (req: Request, res: Response) => {
 	res.send('Welcome to the places API')
 })
 
-app.use('/places/search', placesRouter)
+app.use('/places/search', checkApiKey, placesRouter)
 
 const server = http.createServer(app)
 
