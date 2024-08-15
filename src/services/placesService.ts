@@ -1,7 +1,6 @@
 import { PhotosResponse, PlacesResponse, ReviewsResponse } from '../types/global'
 import { baseApi, logger } from '../utils'
-
-import { data } from '../data'
+import { photos, placesData, reviews } from '../data'
 
 class PlacesService {
 	private nextPlacesLink: string | null = null
@@ -14,7 +13,15 @@ class PlacesService {
 	}
 
 	public getTestData() {
-		return data
+		return placesData
+	}
+
+	public getTestPhotos() {
+		return photos
+	}
+
+	public getTestReviews() {
+		return reviews
 	}
 
 	public async getPlacesByQueryAndLocation(
@@ -40,7 +47,7 @@ class PlacesService {
 						limit: 5,
 						sort: 'DISTANCE',
 						fields:
-							'fsq_id,name,location,categories,closed_bucket,distance,photos,rating,tips,features,geocodes,hours,price,social_media,popularity,website',
+							'fsq_id,name,location,categories,closed_bucket,distance,photos,rating,tips,features,geocodes,hours,hours_popular,price,social_media,popularity,website',
 					},
 				})
 			}

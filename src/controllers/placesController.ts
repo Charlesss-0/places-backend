@@ -2,9 +2,22 @@ import { Request, Response } from 'express'
 
 import { placesService } from '../services'
 
-export async function getTestData(req: Request, res: Response) {
-	const data = placesService.getTestData()
-	res.send(data)
+export async function getPlacesTestData(req: Request, res: Response) {
+	const places = placesService.getTestData()
+
+	res.send({ places: places })
+}
+
+export async function getTestPhotos(req: Request, res: Response) {
+	const photos = placesService.getTestPhotos()
+
+	res.send({ photos: photos })
+}
+
+export async function getTestReviews(req: Request, res: Response) {
+	const reviews = placesService.getTestReviews()
+
+	res.send({ reviews: reviews })
 }
 
 export async function getPlaces(req: Request, res: Response) {

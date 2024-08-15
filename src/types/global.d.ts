@@ -14,58 +14,80 @@ interface PlacesResponse {
 	]
 	closed_bucket: string
 	distance: number
-	features: {
-		payment: {
+	features?: {
+		payment?: {
 			credit_cards: {
-				accepts_credit_cards: boolean
-				amex: boolean
-				visa: boolean
-				master_card: boolean
+				accepts_credit_cards?: boolean
+				amex?: boolean
+				visa?: boolean
+				master_card?: boolean
+			}
+			digital_wallet?: {
+				accepts_nfc: boolean
 			}
 		}
-		food_and_drink: {
-			alcohol: {
-				cocktails: boolean
-				full_bar: boolean
+		food_and_drink?: {
+			alcohol?: {
+				beer?: boolean
+				byo?: boolean
+				cocktails?: boolean
+				full_bar?: boolean
+				wine?: boolean
+				bar_service?: boolean
 			}
-			meals: {
-				brunch: boolean
-				lunch: boolean
-				happy_hour: boolean
-				dessert: boolean
+			meals?: {
+				breakfast?: boolean
+				brunch?: boolean
+				lunch?: boolean
+				dinner?: boolean
+				happy_hour?: boolean
+				dessert?: boolean
+				bar_snacks?: boolean
 			}
 		}
-		services: {
-			delivery: boolean
-			dine_in: {
-				reservations: boolean
+		services?: {
+			delivery?: boolean
+			dine_in?: {
+				reservations?: boolean
+				groups_only_reservations?: boolean
+				essential_reservations?: boolean
 			}
 		}
-		amenities: {
-			restroom: boolean
-			live_music: boolean
-			private_room: boolean
-			outdoor_seating: boolean
-			parking: {
-				parking: boolean
-				private_lot: boolean
+		amenities?: {
+			restroom?: boolean
+			jukebox?: boolean
+			live_music?: boolean
+			music?: boolean
+			tvs?: boolean
+			atm?: boolean
+			coat_check?: boolean
+			wheelchair_accessible?: boolean
+			private_room?: boolean
+			outdoor_seating?: boolean
+			parking?: {
+				parking?: boolean
+				public_lot?: boolan
+				private_lot?: boolean
+				street_parking?: boolean
+				valet_parking?: boolean
 			}
-			wifi: string
+			wifi?: string
+			sit_down_dining?: boolean
 		}
-		attributes: {
-			business_meeting: string
-			clean: string
-			crowded: string
-			dates_popular: string
-			dressy: string
-			families_popular: string
-			good_for_dogs: string
-			groups_popular: string
-			noisy: string
-			quick_bite: string
-			service_quality: string
-			trendy: string
-			value_for_money: string
+		attributes?: {
+			business_meeting?: string
+			clean?: string
+			crowded?: string
+			dates_popular?: string
+			dressy?: string
+			families_popular?: string
+			good_for_dogs?: string
+			groups_popular?: string
+			noisy?: string
+			quick_bite?: string
+			service_quality?: string
+			trendy?: string
+			value_for_money?: string
 		}
 	}
 	geocodes: {
@@ -75,40 +97,46 @@ interface PlacesResponse {
 		}
 	}
 	hours: {
+		display?: string
 		is_local_holiday: boolean
 		open_now: boolean
+		regular?: {
+			close: string
+			day: number
+			open: string
+		}[]
 	}
 	location: {
-		address: string
-		country: string
-		formatted_address: string
-		locality: string
-		region: string
+		address?: string
+		country?: string
+		cross_street?: string
+		formatted_address?: string
+		locality?: string
+		region?: string
 	}
 	name: string
-	photos: [
-		{
-			id: string
-			created_at: string
-			prefix: string
-			suffix: string
-			width: number
-			height: number
-		},
-	]
+	photos: {
+		id: string
+		created_at: string
+		prefix: string
+		suffix: string
+		width: number
+		height: number
+		classifications?: string[]
+	}[]
 	popularity: number
-	price: number
-	rating: number
-	social_media: {
-		twitter: string
+	price?: number
+	rating?: number
+	social_media?: {
+		twitter?: string
+		facebook_id?: string
+		instagram?: string
 	}
-	tips: [
-		{
-			created_at: string
-			text: string
-		},
-	]
-	website: string
+	tips?: {
+		created_at: string
+		text: string
+	}[]
+	website?: string
 }
 
 interface PhotosResponse {
@@ -118,20 +146,21 @@ interface PhotosResponse {
 	suffix: string
 	width: number
 	height: number
-	classifications: string[]
+	classifications?: string[]
 }
 
 interface ReviewsResponse {
 	id: string
 	created_at: string
 	text: string
-	photo: {
+	photo?: {
 		id: string
 		created_at: string
 		prefix: string
 		suffix: string
 		width: number
 		height: number
+		classifications?: string[]
 	}
 }
 
