@@ -1,13 +1,13 @@
 {
-	"name": "discount-finder",
+	"name": "places-api",
 	"version": "1.0.0",
-	"description": "Retailer finder app",
+	"description": "Places finder",
 	"main": "server.js",
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"scripts": {
-		"start": "ts-node ./src/index.js",
+		"start": "ts-node ./src/index.ts",
 		"dev": "nodemon",
 		"build": "tsc",
 		"deploy": "vercel --prod",
@@ -30,12 +30,8 @@
 		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-prettier": "^5.2.1",
-		"module-alias": "^2.2.3",
 		"nodemon": "^3.1.4",
 		"prettier": "^3.3.3",
 		"typescript": "^5.5.4"
-	},
-	"_moduleAliases": {
-		"@": "src"
 	}
 }

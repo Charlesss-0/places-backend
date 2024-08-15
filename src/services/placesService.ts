@@ -1,7 +1,7 @@
-import { PhotosResponse, PlacesResponse, ReviewsResponse } from '@/types/global'
-import { baseApi, logger } from '@/utils'
+import { PhotosResponse, PlacesResponse, ReviewsResponse } from '../types/global'
+import { baseApi, logger } from '../utils'
 
-import { data } from '@/data'
+import { data } from '../data'
 
 class PlacesService {
 	private nextPlacesLink: string | null = null

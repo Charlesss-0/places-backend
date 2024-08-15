@@ -1,4 +1,4 @@
-import { getPhotos, getPlaces, getReviews, getTestData } from '@/controllers'
+import { getPhotos, getPlaces, getReviews, getTestData } from '../controllers'
 
 import express from 'express'
 

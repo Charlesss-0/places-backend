@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 
-import { placesService } from '@/services'
+import { placesService } from '../services'
 
 export async function getTestData(req: Request, res: Response) {
 	const data = placesService.getTestData()
