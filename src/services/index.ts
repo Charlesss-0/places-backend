@@ -1,8 +1,3 @@
-import {
-	getPlacesByQueryAndLocation,
-	getPlacesPhotos,
-	getPlacesReviews,
-	getQueryData,
-} from './placesService'
+import placesService from './placesService'
 
-export { getQueryData, getPlacesByQueryAndLocation, getPlacesPhotos, getPlacesReviews }
+export { placesService }

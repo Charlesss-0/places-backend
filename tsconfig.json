@@ -1,17 +1,18 @@
 {
 	"compilerOptions": {
-		"outDir": "./dist",
-		"target": "ESNext",
+		"target": "ES6",
 		"module": "commonjs",
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
+		"outDir": "./dist",
 		"strict": true,
+		"esModuleInterop": true,
 		"skipLibCheck": true,
-		"typeRoots": ["@types/*"],
+		"forceConsistentCasingInFileNames": true,
+		"typeRoots": ["./types", "./node_modules/@types"],
+		"baseUrl": "./",
 		"paths": {
-			"types/*": ["./@types/*"]
+			"@/*": ["./src/*"]
 		}
 	},
-	"include": ["api", "src/**/*", "./@types/**/*.d.ts"],
+	"include": ["api", "src/**/*", "src/**/*", "types/global.d.ts"],
 	"exclude": ["node_modules"]
 }

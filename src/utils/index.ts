@@ -1,4 +1,4 @@
-import configureWebSocket from './websocket'
+import baseApi from './baseApi'
 import { logger } from './logger'
 
-export { configureWebSocket, logger }
+export { logger, baseApi }

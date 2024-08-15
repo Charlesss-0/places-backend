@@ -202,3 +202,4 @@
 {"level":"warn","message":"No photos found for place 5306827a498e843a59439e0c"}
 {"level":"warn","message":"No photos found for place 560ddaaa498ee83abf981a82"}
 {"level":"warn","message":"No photos found for place 52dde2f511d26da7ac2322d4"}
+{"level":"error","message":"Error fetching places: Request failed with status code 400"}
