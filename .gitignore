@@ -4,3 +4,6 @@
 # node related packages
 node_modules
 .vercel
+
+# logs
+*log
