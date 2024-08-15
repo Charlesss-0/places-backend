@@ -1,3 +1,3 @@
-import { getPlaces, getTestData } from './placesController'
+import { getPlaces, getReviews, getTestData } from './placesController'
 
-export { getPlaces, getTestData }
+export { getTestData, getPlaces, getReviews }

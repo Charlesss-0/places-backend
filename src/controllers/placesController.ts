@@ -1,5 +1,10 @@
 import { Request, Response } from 'express'
-import { getPlacesByQueryAndLocation, getPlacesPhotos, getQueryData } from '../services'
+import {
+	getPlacesByQueryAndLocation,
+	getPlacesPhotos,
+	getPlacesReviews,
+	getQueryData,
+} from '../services'
 
 export async function getTestData(req: Request, res: Response) {
 	const data = getQueryData()
@@ -10,7 +15,7 @@ export async function getPlaces(req: Request, res: Response) {
 	const { query, lat, lon, next } = req.query
 
 	if (!query || !lat || !lon) {
-		return res.status(400).send({ error: 'Missing required parameters: query, lat, and lon' })
+		return res.status(400).send({ error: 'Missing required parameters' })
 	}
 
 	try {
@@ -31,6 +36,21 @@ export async function getPlaces(req: Request, res: Response) {
 		const placesWithPhotos = await getPlacesPhotos(places)
 		res.send({ places: placesWithPhotos, hasNextPage })
 	} catch (error: any) {
-		res.status(500).send({ error: `Error fetching data from FSQ ${error.message}` })
+		res.status(500).send({ error: `Error fetching data: ${error.message}` })
+	}
+}
+
+export async function getReviews(req: Request, res: Response) {
+	const { id } = req.query
+
+	if (!id) {
+		return res.status(400).send({ error: 'Missing required parameters' })
+	}
+
+	try {
+		const { reviews } = await getPlacesReviews(id as string)
+		res.send({ reviews: reviews })
+	} catch (error: any) {
+		res.status(500).send({ error: `Error fetching reviews: ${error.message}` })
 	}
 }

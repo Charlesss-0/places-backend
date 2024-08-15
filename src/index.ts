@@ -17,7 +17,7 @@ app.get('/', (req: Request, res: Response) => {
 	res.send('Welcome to the places API')
 })
 
-app.use('/places/search', checkApiKey, placesRouter)
+app.use('/places', checkApiKey, placesRouter)
 
 const server = http.createServer(app)
 
